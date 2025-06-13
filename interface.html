@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainBoard - Home</title>
+  <link rel="stylesheet" href="interface.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo-section">
+        <div class="logo">BB</div>
+        <div class="brand-name">BrainBoard</div>
+      </div>
+      <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Search courses, students, discussions..." id="searchInput">
+        <div class="search-results" id="searchResults"></div>
+      </div>
+      <div class="user-menu">
+        <div class="user-avatar" id="userAvatar" onclick="toggleProfile()">D</div>
+        <div class="profile-dropdown" id="profileDropdown">
+          <div class="profile-header">
+            <div class="profile-avatar-large" id="profileAvatarLarge">D</div>
+            <div class="profile-details">
+              <h3 id="profileName">John Doe</h3>
+              <p id="profileEmail">john.doe@example.com</p>
+            </div>
+          </div>
+          <div class="profile-stats">
+            <div class="stat-item">
+              <span class="stat-number">42</span>
+              <span class="stat-label">Posts</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">156</span>
+              <span class="stat-label">Likes</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">23</span>
+              <span class="stat-label">Following</span>
+            </div>
+          </div>
+          <div class="profile-actions">
+            <button class="profile-action-btn" onclick="editProfile()">✏️ Edit Profile</button>
+            <button class="profile-action-btn" onclick="logout()" style="color: #ff6b6b;">🚪 Log Out</button>
+          </div>
+        </div>
+        <a href="login.html" class="logout-btn">Log Out</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Feed Filter -->
+    <div class="feed-filter">
+      <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterPosts('all', event)">All Posts</button>
+        <button class="filter-btn" onclick="filterPosts('discussions', event)">Discussions</button>
+        <button class="filter-btn" onclick="filterPosts('questions', event)">Questions</button>
+        <button class="filter-btn" onclick="filterPosts('tips', event)">Study Tips</button>
+      </div>
+      <select class="sort-dropdown" onchange="sortPosts(this.value)">
+        <option value="recent">Most Recent</option>
+        <option value="popular">Most Popular</option>
+        <option value="commented">Most Commented</option>
+      </select>
+    </div>
+
+    <!-- Post Composer -->
+    <div class="post-composer">
+      <div class="composer-header">
+        <div class="composer-avatar">D</div>
+        <textarea class="composer-input" placeholder="Share your thoughts, ask questions, or post study tips..."></textarea>
+      </div>
+      <div class="composer-actions">
+        <div class="media-buttons">
+          <button class="media-btn" onclick="uploadMedia('photo')">📷 Photo</button>
+          <button class="media-btn" onclick="uploadMedia('video')">📹 Video</button>
+          <button class="media-btn" onclick="uploadMedia('document')">📄 Document</button>
+          <button class="media-btn" onclick="toggleQuestionMode()">💡 Question</button>
+        </div>
+        <button class="post-btn" onclick="createPost()">Post</button>
+      </div>
+    </div>
+
+    <!-- Hidden file inputs -->
+    <input type="file" id="photoInput" accept="image/*" class="hidden" onchange="handleFileUpload(this, 'photo')">
+    <input type="file" id="videoInput" accept="video/*" class="hidden" onchange="handleFileUpload(this, 'video')">
+    <input type="file" id="documentInput" accept=".pdf,.doc,.docx,.txt,.ppt,.pptx" class="hidden" onchange="handleFileUpload(this, 'document')">
+
+    <!-- Feed -->
+    <div class="feed" id="feedContainer">
+      <!-- Sample posts will be generated here -->
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="quick-actions">
+    <button class="quick-action-btn" onclick="scrollToTop()" title="Scroll to Top">↑</button>
+    <button class="quick-action-btn" onclick="focusComposer()" title="New Post">✏️</button>
+  </div>
+
+  <script src="interface.js"></script>
+</body>
+</html>
