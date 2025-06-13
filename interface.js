@@ -529,7 +529,8 @@ function focusComposer() {
 function logout() {
   showNotification('Logging out...', 'info');
   setTimeout(() => {
-    window.location.href = 'login.html';
+    localStorage.removeItem('isAuthenticated');
+    window.location.href = '/login.html';
   }, 1500);
 }
 

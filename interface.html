@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BrainBoard - Home</title>
   <link rel="stylesheet" href="interface.css">
+  <script>
+  const auth = localStorage.getItem('isAuthenticated');
+
+  if (auth === 'false' || auth === null) {
+      window.location.href = '/login.html';
+  }
+  </script>
 </head>
 <body>
   <!-- Header -->
@@ -47,7 +54,7 @@
             <button class="profile-action-btn" onclick="logout()" style="color: #ff6b6b;">🚪 Log Out</button>
           </div>
         </div>
-        <a href="login.html" class="logout-btn">Log Out</a>
+        <button type="button" href="login.html" class="logout-btn" onclick="logout()">Log Out</button>
       </div>
     </div>
   </header>

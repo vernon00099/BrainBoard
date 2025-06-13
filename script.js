@@ -67,16 +67,15 @@ form.addEventListener('submit', function (e) {
 
     // Simulate login process
     setTimeout(() => {
-        if (email === DEMO_EMAIL && password === DEMO_PASSWORD) {
-            // Success
-            successMsg.style.display = 'block';
-            form.style.opacity = '0.5';
+       if (email === DEMO_EMAIL && password === DEMO_PASSWORD) {
+        localStorage.setItem('isAuthenticated', 'true'); // <--- Store auth state
+        successMsg.style.display = 'block';
+        form.style.opacity = '0.5';
 
-            setTimeout(() => {
-                // Redirect to loob.html after successful login
-                window.location.href = 'interface.html';
-            }, 2000);
-        } else {
+        setTimeout(() => {
+            window.location.href = 'interface.html';
+        }, 2000);
+    } else {
             // Failed login
             showError('password', true);
             document.getElementById('passwordError').textContent =
